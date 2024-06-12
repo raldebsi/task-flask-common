@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from blueprints.ridhwan import ridhwan
+from blueprints.sara import sara
 
 app = Flask("Testing app")
 app.register_blueprint(ridhwan)

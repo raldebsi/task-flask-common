@@ -83,13 +83,13 @@ def print_stars_flask():
     return jsonify(answer), 200
 
 
-def caeser_do(k):
-    msg="Hello this is my first print"
+def caeser_do(k,msg):
+   
     new= ''.join([chr(((ord(i) - ord('a') + k) % 26) + ord('a')) for i in msg])
     return new
 
-def caeser_undo(k):
-    msg="Hello this is my first print"
+def caeser_undo(k,msg):
+    
     new=''.join([chr((ord(i) - k - ord('a')) % 26 + ord('a')) for i in msg])
     return new
 
@@ -104,11 +104,12 @@ def caeser_do_flask():
         return jsonify(error="Invalid method!"), 405
     
     shiftNumber = values.get("shiftNumber")
-    
+    message=values.get("msg")
+
     if shiftNumber is None:
         return jsonify(error="Missing `shiftNumber`"), 400
 
-    return jsonify(answer= caeser_do(int(shiftNumber))), 200
+    return jsonify(answer= caeser_do(int(shiftNumber), message)), 200
 
 @ranim.route("/caeserundo", methods=["GET", "POST"])
 def caeser_undo_flask():
@@ -121,9 +122,9 @@ def caeser_undo_flask():
         return jsonify(error="Invalid method!"), 405
     
     shiftNumber = values.get("shiftNumber")
-    
+    message=values.get("msg")
     if shiftNumber is None:
         return jsonify(error="Missing `shiftNumber`"), 400
 
-    answer= caeser_undo(int(shiftNumber))
+    answer= caeser_undo(int(shiftNumber),message)
     return jsonify(answer), 200

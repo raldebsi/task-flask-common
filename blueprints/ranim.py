@@ -25,8 +25,12 @@ def sum_flask():
     if n2 is None:
         return jsonify(error="Missing `n2`"), 400
     
-    answer= sum(int(n1), int(n2))
-    return jsonify(answer), 200
+    
+    return jsonify(
+        answer= sum(
+            int(n1), int(n2)
+            )
+        ), 200
 
 def average_calculate(n1,n2):
     return n1+n2/2
@@ -79,8 +83,12 @@ def print_stars_flask():
     if stars is None:
         return jsonify(error="Missing `stars`"), 400
 
-    answer= print_stars(int(stars))
-    return jsonify(answer), 200
+    
+    return jsonify(
+        answer= print_stars(
+            int(stars)
+            )
+        ), 200
 
 
 def caeser_do(k,msg):
@@ -109,7 +117,11 @@ def caeser_do_flask():
     if shiftNumber is None:
         return jsonify(error="Missing `shiftNumber`"), 400
 
-    return jsonify(answer= caeser_do(int(shiftNumber), message)), 200
+    return jsonify(
+        answer= caeser_do(
+            int(shiftNumber), message
+            )
+            ), 200
 
 @ranim.route("/caeserundo", methods=["GET", "POST"])
 def caeser_undo_flask():
@@ -126,5 +138,9 @@ def caeser_undo_flask():
     if shiftNumber is None:
         return jsonify(error="Missing `shiftNumber`"), 400
 
-    answer= caeser_undo(int(shiftNumber),message)
-    return jsonify(answer), 200
+    
+    return jsonify(
+        answer= caeser_undo(
+            int(shiftNumber),message
+            )
+        ), 200

@@ -18,8 +18,6 @@ def caeser_mod(word,k):
 def caeser_unmod(word,k):
     return "".join([ chr((ord(i) - k -  ord("a")) %26 + ord("a"))  for i in word])
     
-
-
 @sara.route("/sum", methods= ["GET", "POST"])
 def sum_flask():
     if request.method== "GET":

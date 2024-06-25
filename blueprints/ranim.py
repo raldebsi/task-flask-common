@@ -80,9 +80,9 @@ def print_stars_flask():
     
     stars = values.get("stars")
     
-    if stars is None or not str(stars).isdigit() :
+    if stars is None :
         return jsonify(error="Missing number of stars"), 400
-    if not str(stars).isdigit() or str(stars).isdigit()<0:
+    if not str(stars).isdigit():
         return jsonify(error="Invalid stars number"), 400
     
     return jsonify(

@@ -115,10 +115,10 @@ def caeser_do_flask():
     shiftNumber = values.get("shiftNumber")
     message=values.get("msg")
 
-    if shiftNumber is None or not str(shiftNumber).isdigit():
+    if shiftNumber is None:
         return jsonify(error="Missing `shiftNumber`"), 400
     
-    if not str(shiftNumber).isdigit() or str(shiftNumber).isdigit()<0:
+    if not str(shiftNumber).isdigit():
         return jsonify(error="Invalid shift number"), 400
     return jsonify(
         answer= caeser_do(
@@ -138,10 +138,10 @@ def caeser_undo_flask():
     
     shiftNumber = values.get("shiftNumber")
     message=values.get("msg")
-    if shiftNumber is None or not str(shiftNumber).isdigit():
+    if shiftNumber is None :
         return jsonify(error="Missing `shiftNumber`"), 400
 
-    if not str(shiftNumber).isdigit() or str(shiftNumber).isdigit()<0:
+    if not str(shiftNumber).isdigit():
         return jsonify(error="Invalid shift number"), 400
     
     return jsonify(

@@ -1,8 +1,15 @@
 from flask import Flask, request, jsonify
 from blueprints.ridhwan import ridhwan
+from blueprints.sara import sara
+from blueprints.sara2 import sara2
 
 app = Flask("Testing app")
+<<<<<<< HEAD
+=======
 app.register_blueprint(ridhwan)
+app.register_blueprint(sara)
+>>>>>>> 5db46ad ( fixing comments on naming)
+app.register_blueprint(sara2)
 
 def sum(a: int, b: int):
     print(f"You are going to add {a} + {b} together!!!!!!!")

@@ -13,13 +13,15 @@ def todos_flask(user_id):
         return jsonify(error="Invalid method!"), 405
     
 
-    u_ID=str(user_id).isdigit()
-    if user_id is None:
-        return jsonify(error="Missing `user id`"), 400
+    u_ID = user_id.isdigit()
+    if not u_ID:
+        return jsonify(error="`user_id` was not an interger")
     
-    if not u_ID or int(user_id)<0 or user_id=="":
-        return jsonify(error="Invalid user id"), 400
-    
+    user_id = int(user_id)
+
+    if user_id < 0:
+        return jsonify(error="Invalid `user_id`"), 400
+
     if int(response.status_code)//100 !=2:
          return jsonify(error="Invalid request!")
     
@@ -36,12 +38,14 @@ def posts_flask(user_id):
         return jsonify(error="Invalid method!"), 405
     
 
-    u_ID=str(user_id).isdigit()
-    if user_id is None:
-        return jsonify(error="Missing `user id`"), 400
+    u_ID = user_id.isdigit()
+    if not u_ID:
+        return jsonify(error="`user_id` was not an interger")
     
-    if not u_ID or int(user_id)<0 or user_id=="":
-        return jsonify(error="Invalid user id"), 400
+    user_id = int(user_id)
+
+    if user_id < 0:
+        return jsonify(error="Invalid `user_id`"), 400
     
     if int(response.status_code)//100 !=2:
          return jsonify(error="Invalid request!")
@@ -57,13 +61,14 @@ def comments_flask(post_id):
     else:
         return jsonify(error="Invalid method!"), 405
     
-    postID=str(post_id).isdigit()
+    p_ID = post_id.isdigit()
+    if not p_ID:
+        return jsonify(error="`post_id` was not an interger")
     
-    if not postID or int(post_id)<0 or post_id=="":
-        return jsonify(error="Invalid post id"), 400
-    
-    if post_id is None:
-        return jsonify(error="Missing `post id`"), 400
+    post_id = int(post_id)
+
+    if post_id < 0:
+        return jsonify(error="Invalid `post_id`"), 400
     
     if int(response.status_code)//100 !=2:
          return jsonify(error="Invalid request!")
@@ -71,7 +76,7 @@ def comments_flask(post_id):
     return response.json()
 
 
-@ranim2.route("/users/todos", methods=["GET"])
+@ranim2.route("/todos", methods=["GET"])
 def all_users_todos():
     response= requests.get(f"https://jsonplaceholder.typicode.com/todos")
     

@@ -4,6 +4,8 @@ from blueprints.ranim import ranim
 from blueprints.ranim2 import ranim2
 app = Flask("Testing app")
 app.register_blueprint(ranim2)
+app.register_blueprint(ranim)
+app.register_blueprint(ridhwan)
 def sum(a: int, b: int):
     print(f"You are going to add {a} + {b} together!!!!!!!")
     return a + b

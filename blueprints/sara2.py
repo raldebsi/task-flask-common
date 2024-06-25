@@ -20,16 +20,16 @@ def posts_user(user_id):
     response= requests.get(f"https://jsonplaceholder.typicode.com/users/{user_id}/posts")
     
     if user_id is None:
-        return jsonify(error= "user_id is None")
+        return jsonify(error= "user_id is null")
     
     if int(response.status_code)//100 != 2:
         return jsonify(error= "Invalid request")
     
     return response.json()
 
-@sara2.route('/user/<user_id>/comments', methods=["GET"])
-def comments_user(user_id):
-    response= requests.get(f"https://jsonplaceholder.typicode.com/posts/{user_id}/comments")
+@sara2.route('/user/<post_id>/comments', methods=["GET"])
+def comments_user(post_id):
+    response= requests.get(f"https://jsonplaceholder.typicode.com/posts/{post_id}/comments")
     
     if user_id is None:
         return jsonify(error= "user_id is None")
@@ -40,7 +40,7 @@ def comments_user(user_id):
     return response.json()
 
  
-@sara2.route('/users/todos', methods=["GET"])
+@sara2.route('/posts/todos', methods=["GET"])
 def todos_all():
     response= requests.get(f"https://jsonplaceholder.typicode.com/todos")
     
@@ -49,7 +49,7 @@ def todos_all():
     
     return response.json()
 
-@sara2.route('/users/posts', methods=["GET"])
+@sara2.route('/posts', methods=["GET"])
 def posts_all():
     response= requests.get(f"https://jsonplaceholder.typicode.com/posts")
 
@@ -58,7 +58,7 @@ def posts_all():
     
     return response.json()
 
-@sara2.route('/users/comments', methods=["GET"])
+@sara2.route('/comments', methods=["GET"])
 def comments_all():
     response= requests.get(f"https://jsonplaceholder.typicode.com/comments")
     
